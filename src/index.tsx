@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -10,11 +10,11 @@ import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
+    <BrowserRouter>
+        <Suspense fallback="Loading...">
             <App />
-        </BrowserRouter>
-    </React.StrictMode>
+        </Suspense>
+    </BrowserRouter>
 )
 
 // If you want to start measuring performance in your app, pass a function

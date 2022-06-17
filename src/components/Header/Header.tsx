@@ -10,12 +10,12 @@ const links = [
         label: 'Posts',
     },
     {
-        to: '/contact',
-        label: 'Contact',
-    },
-    {
         to: '/about',
         label: 'About me',
+    },
+    {
+        to: '/contact',
+        label: 'Contact',
     },
 ]
 

@@ -7,7 +7,7 @@ export default function AppLayout() {
     return (
         <Fragment>
             <Header />
-            <main className="container mx-auto">
+            <main className="container mx-auto my-5">
                 <Outlet />
             </main>
         </Fragment>
