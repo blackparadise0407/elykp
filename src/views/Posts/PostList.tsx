@@ -8,8 +8,9 @@ interface PostListProps {
 
 export default memo(function PostList({ posts }: PostListProps) {
     if (!posts.length) return null
+
     return (
-        <div className="mx-auto max-w-[1000px] space-y-10">
+        <div className="mx-auto max-w-[770px] space-y-10">
             {posts.map((post) => (
                 <PostCard key={post.id} data={post} />
             ))}
