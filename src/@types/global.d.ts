@@ -5,9 +5,15 @@ declare global {
         title: string
         content: string
         upvotes: number
-        downvotes: number
+        views: number
         createdAt: Date
         author: string
+    }
+
+    interface Heading {
+        id: string
+        title: string
+        nodeName: string
     }
 }
 export {}

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from 'app/App'
+import { LinearProgress } from 'components'
 
 import './index.css'
 
@@ -11,7 +12,7 @@ import reportWebVitals from './reportWebVitals'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <BrowserRouter>
-        <Suspense fallback="Loading...">
+        <Suspense fallback={<LinearProgress className="fixed top-0 left-0" />}>
             <App />
         </Suspense>
     </BrowserRouter>

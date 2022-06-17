@@ -8,13 +8,18 @@ import PostList from './PostList'
 export default function PostsView() {
     const posts = useStore((state) => state.posts)
     const updatePosts = useStore((state) => state.updatePosts)
+    const updateLoading = useStore((state) => state.updateLoading)
 
     useEffect(() => {
         async function fetchPosts() {
+            updateLoading(true)
             try {
                 const data = await getPosts()
                 updatePosts(data)
-            } catch (e) {}
+            } catch (e) {
+            } finally {
+                updateLoading(false)
+            }
         }
         typeof posts === 'undefined' && fetchPosts()
     }, [posts])

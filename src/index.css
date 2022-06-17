@@ -40,3 +40,7 @@ html {
 body {
     @apply text-base font-normal;
 }
+
+.container {
+    @apply p-5 md:p-0;
+}
