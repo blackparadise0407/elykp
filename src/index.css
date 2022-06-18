@@ -1,7 +1,12 @@
 @tailwind base;
 
 @layer base {
-    h1,h2,h3,h4,h5,h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         @apply font-medium;
     }
 
@@ -29,15 +34,19 @@
         @apply text-xs;
     }
 
-   
-
     a {
-        @apply no-underline hover:text-blue-500 transition-colors;
+        @apply font-medium hover:text-blue-500 transition-colors;
     }
 }
 
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    button {
+        @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg whitespace-nowrap hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-colors;
+    }
+}
 
 html {
     font-family: 'Poppins', sans-serif;
@@ -56,9 +65,27 @@ blockquote {
 }
 
 blockquote::before {
-    @apply content-[''] absolute h-full w-[4px] left-0 top-0 bg-neutral-500 ;
+    @apply content-[''] absolute h-full w-[4px] left-0 top-0 bg-neutral-500;
 }
 
 section {
     @apply h-screen;
+}
+
+.link {
+    border-bottom-width: 0;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#006eff, #006eff);
+    background-size: 0 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .4s ease-in-out, color 0.2s ease;
+}
+
+.link:hover {
+    background-size: 100% 2px;
+    background-position: 0 100%
+}
+
+p {
+    word-spacing: 0.05em;
 }

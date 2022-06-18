@@ -33,7 +33,8 @@ export default function Header() {
         <header className="relative h-[88px] bg-white shadow">
             <div className="app-container mx-auto h-full flex items-center">
                 <h1 className="font-bold">ElykP</h1>
-                <div className="flex items-center gap-5 self-stretch mx-auto">
+                <div className="flex-grow"></div>
+                <div className="hidden md:flex items-center gap-5 self-stretch">
                     {links.map(({ to, label }, idx) => (
                         <NavLink
                             id={to}
@@ -50,6 +51,7 @@ export default function Header() {
                         </NavLink>
                     ))}
                 </div>
+                <div className="flex-grow"></div>
                 <div>Theme</div>
             </div>
             {!!offsetLeft && (

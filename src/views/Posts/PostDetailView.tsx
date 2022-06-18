@@ -135,7 +135,7 @@ export default function PostDetailView() {
                                             )
                                         },
                                     }}
-                                    className="mt-10 space-y-2 tracking-wide leading-relaxed"
+                                    className="mt-10 space-y-2 tracking-wider leading-relaxed"
                                     remarkPlugins={[remarkGfm]}
                                 >
                                     {post.content}
