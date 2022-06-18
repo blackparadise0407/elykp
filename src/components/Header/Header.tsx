@@ -30,8 +30,8 @@ export default function Header() {
     }, [pathname, w])
 
     return (
-        <header className="relative h-[88px] shadow">
-            <div className="container mx-auto h-full flex items-center">
+        <header className="relative h-[88px] bg-white shadow">
+            <div className="app-container mx-auto h-full flex items-center">
                 <h1 className="font-bold">ElykP</h1>
                 <div className="flex items-center gap-5 self-stretch mx-auto">
                     {links.map(({ to, label }, idx) => (

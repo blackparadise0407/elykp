@@ -1,7 +1,7 @@
 .progress {
     -webkit-appearance: none;
     -moz-appearance: none;
-    @apply w-full h-1 text-base text-blue-500 bg-gray-100 border-none appearance-none;
+    @apply w-full h-1 text-base text-blue-500 bg-gray-100 z-50 border-none appearance-none;
 }
 
 .progress::-webkit-progress-bar {

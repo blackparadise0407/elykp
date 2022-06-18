@@ -25,7 +25,7 @@ export default function PostsView() {
     }, [posts])
 
     return (
-        <div>
+        <div className="app-container my-5">
             <PostList posts={posts ?? []} />
         </div>
     )

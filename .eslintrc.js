@@ -30,6 +30,7 @@ module.exports = {
     'import/no-named-as-default-member': 'off',
     'no-empty': ['error', { allowEmptyCatch: true }],
     "react/react-in-jsx-scope": "off",
+    'react/no-children-prop': "off",
     'no-empty-function': 'off',
     "@typescript-eslint/no-empty-function": [
       "error",

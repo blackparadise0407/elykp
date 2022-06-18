@@ -10,7 +10,7 @@ export default function AppLayout() {
         <Fragment>
             {loading && <LinearProgress className="fixed top-0 left-0 z-50" />}
             <Header />
-            <main className="container mx-auto my-5">
+            <main>
                 <Outlet />
             </main>
         </Fragment>
