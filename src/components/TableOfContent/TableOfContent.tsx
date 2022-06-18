@@ -18,9 +18,11 @@ export default memo(function TableOfContent({
 
     return (
         <div className="hidden md:block sticky top-20 h-min min-w-[180px] max-w-[300px] space-y-2">
+            <h2>Table of content</h2>
             {headings.map(({ id, title }) => (
                 <div
                     key={id}
+                    title={title}
                     className={clsx(
                         'px-3 block relative text-sm font-medium hover:text-blue-500 cursor-pointer transition-colors truncate',
                         activeId === id && 'text-blue-500'

@@ -46,7 +46,7 @@ export const useIntersectionObserver = <T extends HTMLElement>(
             }
 
             const observer = new IntersectionObserver(callback, {
-                rootMargin: '-50px 0px -40% 0px',
+                rootMargin: '-50px 0px 0px 0px',
             })
             const headingElements = Array.from(
                 ref.current.querySelectorAll('h1')
