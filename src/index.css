@@ -53,11 +53,11 @@ html {
 }
 
 body {
-    @apply text-base font-normal;
+    @apply h-screen overflow-hidden text-base font-normal;
 }
 
 .app-container {
-    @apply container p-5 md:p-0 mx-auto;
+    @apply container mx-auto;
 }
 
 blockquote {

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { memo } from 'react'
 
 import PostCard from './PostCard'
@@ -7,13 +8,18 @@ interface PostListProps {
 }
 
 export default memo(function PostList({ posts }: PostListProps) {
-    if (!posts.length) return null
-
     return (
-        <div className="mx-auto max-w-[770px] space-y-10">
-            {posts.map((post) => (
-                <PostCard key={post.id} data={post} />
+        <motion.div layout className="mx-auto max-w-[770px] space-y-10">
+            {posts.map((post, idx) => (
+                <motion.div
+                    id={post.id}
+                    key={post.id}
+                    initial={{ opacity: 0, x: -idx * 200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                >
+                    <PostCard data={post} />
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
     )
 })

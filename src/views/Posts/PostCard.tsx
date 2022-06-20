@@ -29,7 +29,7 @@ export default memo(function PostCard({ data }: PostCardProps) {
             <ReactMarkdown className="line-clamp-2" remarkPlugins={[remarkGfm]}>
                 {content}
             </ReactMarkdown>
-            <Link className="inline-block underline" to={`/${id}`}>
+            <Link className="inline-block" to={`/${id}`}>
                 Read more
             </Link>
             <div className="flex gap-5">

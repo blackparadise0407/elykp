@@ -68,7 +68,7 @@ export default function PostDetailView() {
     const minRead = getMinRead(post?.content)
 
     return (
-        <div className="flex justify-center gap-10 app-container my-5">
+        <div className="flex justify-center gap-10 py-5 h-[calc(100vh-88px)] overflow-y-auto">
             {loading ? (
                 <SkeletonPost />
             ) : (

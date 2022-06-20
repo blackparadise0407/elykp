@@ -1,6 +1,8 @@
+import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 
 import { getPosts } from 'apis/endpoints/posts'
+import { AnimatedView } from 'components'
 import { useStore } from 'store/store'
 
 import PostList from './PostList'
@@ -14,8 +16,8 @@ export default function PostsView() {
         async function fetchPosts() {
             updateLoading(true)
             try {
-                const data = await getPosts()
-                updatePosts(data)
+                const { posts, total } = await getPosts()
+                updatePosts(posts)
             } catch (e) {
             } finally {
                 updateLoading(false)
@@ -25,8 +27,12 @@ export default function PostsView() {
     }, [posts])
 
     return (
-        <div className="app-container my-5">
-            <PostList posts={posts ?? []} />
-        </div>
+        <AnimatedView>
+            <div className="h-[calc(100vh-88px)] overflow-y-auto">
+                <AnimatePresence initial={false}>
+                    {!!posts?.length && <PostList posts={posts} />}
+                </AnimatePresence>
+            </div>
+        </AnimatedView>
     )
 }
