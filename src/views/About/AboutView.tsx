@@ -3,7 +3,7 @@ import { AiOutlineCloudDownload } from 'react-icons/ai'
 export default function AboutView() {
     return (
         <>
-            <section className="bg-gray-50 h-[600px]">
+            <section className="bg-white h-[calc(100vh-88px)]">
                 <div className="app-container relative h-full w-full flex items-center">
                     <div className="max-w-[700px] space-y-3">
                         <h4 className="text-gray-500">Hi, I am</h4>
@@ -32,7 +32,7 @@ export default function AboutView() {
                         </small>
                     </div>
                     <img
-                        className="hidden md:block max-w-[340px] mx-auto self-end"
+                        className="hidden md:block min-w-0 max-w-[720px] mx-auto"
                         src={require('assets/images/profile.png')}
                         alt="Picture of Kyle Pham"
                     />

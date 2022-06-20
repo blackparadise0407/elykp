@@ -14,8 +14,8 @@ export default function PostsView() {
         async function fetchPosts() {
             updateLoading(true)
             try {
-                const data = await getPosts()
-                updatePosts(data)
+                const { posts, total } = await getPosts()
+                updatePosts(posts)
             } catch (e) {
             } finally {
                 updateLoading(false)
