@@ -10,6 +10,6 @@ interface State {
 export const useStore = create<State>((set) => ({
     loading: false,
     posts: undefined,
-    updatePosts: (posts) => set((state) => ({ ...state, posts })),
-    updateLoading: (loading) => set((state) => ({ ...state, loading })),
+    updatePosts: (posts) => set(() => ({ posts })),
+    updateLoading: (loading) => set(() => ({ loading })),
 }))

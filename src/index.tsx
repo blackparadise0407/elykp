@@ -1,7 +1,9 @@
+import { ApolloProvider } from '@apollo/client'
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
+import { client } from 'apollo/client'
 import App from 'app/App'
 import { LinearProgress } from 'components'
 
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <BrowserRouter>
         <Suspense fallback={<LinearProgress className="fixed top-0 left-0" />}>
-            <App />
+            <ApolloProvider client={client}>
+                <App />
+            </ApolloProvider>
         </Suspense>
     </BrowserRouter>
 )

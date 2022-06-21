@@ -43,7 +43,8 @@ export default function Header() {
                             className={({ isActive }) =>
                                 clsx(
                                     'w-[100px] text-center',
-                                    isActive && 'text-blue-500'
+                                    isActive &&
+                                        'text-blue-500 pointer-events-none'
                                 )
                             }
                         >

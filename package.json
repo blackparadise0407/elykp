@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.6.8",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -15,6 +16,7 @@
     "clsx": "^1.1.1",
     "dayjs": "^1.11.3",
     "framer-motion": "^6.3.11",
+    "graphql": "^16.5.0",
     "query-string": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

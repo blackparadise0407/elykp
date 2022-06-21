@@ -18,7 +18,7 @@ export default memo(function TableOfContent({
 
     return (
         <div className="hidden md:block sticky top-20 h-min min-w-[180px] max-w-[300px] space-y-2">
-            <h2>Table of content</h2>
+            <h4 className="capitalize">ON THIS PAGE</h4>
             {headings.map(({ id, title }) => (
                 <div
                     key={id}

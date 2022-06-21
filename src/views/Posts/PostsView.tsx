@@ -1,32 +1,12 @@
-import { useEffect } from 'react'
-
-import { getPosts } from 'apis/endpoints/posts'
-import { useStore } from 'store/store'
-
+import { usePostsQuery } from './hooks'
 import PostList from './PostList'
 
 export default function PostsView() {
-    const posts = useStore((state) => state.posts)
-    const updatePosts = useStore((state) => state.updatePosts)
-    const updateLoading = useStore((state) => state.updateLoading)
-
-    useEffect(() => {
-        async function fetchPosts() {
-            updateLoading(true)
-            try {
-                const { posts, total } = await getPosts()
-                updatePosts(posts)
-            } catch (e) {
-            } finally {
-                updateLoading(false)
-            }
-        }
-        typeof posts === 'undefined' && fetchPosts()
-    }, [posts])
+    const { data } = usePostsQuery()
 
     return (
         <div className="app-container my-5">
-            <PostList posts={posts ?? []} />
+            {!!data?.posts.length && <PostList posts={data.posts} />}
         </div>
     )
 }

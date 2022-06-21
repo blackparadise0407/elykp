@@ -8,6 +8,14 @@ declare global {
         views: number
         createdAt: Date
         author: string
+        publishedAt: Date
+    }
+
+    interface IConnection {
+        pageInfo: {
+            endCursor: string | null
+            hasNextPage: boolean
+        }
     }
 
     interface Heading {

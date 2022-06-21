@@ -8,30 +8,25 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import remarkGfm from 'remark-gfm'
 import slugify from 'slugify'
 
-import { getPostBySlug } from 'apis/endpoints/posts'
+import { cache } from 'apollo/client'
 import { Skeleton } from 'components'
 import { TableOfContent } from 'components/TableOfContent'
 import { useHeadingData } from 'hooks/useHeadingData'
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver'
 import { getMinRead } from 'shared/helper'
-import { useStore } from 'store/store'
 
+import { usePostLazyQuery, useUpdatePostViewMutation } from './hooks'
 import SkeletonPost from './SkeletonPost'
-
-const cachedPost: { [slug: string]: IPost } = {}
 
 export default function PostDetailView() {
     const { slug } = useParams<{ slug: string }>()
     const [activeId, setActiveId] = useState('')
-    const loading = useStore((state) => state.loading)
-    const updateLoading = useStore((state) => state.updateLoading)
-    const [post, setPost] = useState<IPost | undefined>(() => {
-        if (!slug) return undefined
-        return cachedPost[slug]
-    })
+    const [postLazy, { data, loading }] = usePostLazyQuery()
+    const [updatePostView] = useUpdatePostViewMutation()
+
     const ref = useRef<HTMLDivElement>(null)
 
-    const headings = useHeadingData(ref, [post])
+    const headings = useHeadingData(ref, [data?.post])
 
     useIntersectionObserver(ref, setActiveId)
 
@@ -43,29 +38,28 @@ export default function PostDetailView() {
             console.log('Viewed')
         }, 5000)
 
-        async function fetchPost() {
-            updateLoading(true)
-            if (!slug) return
-            try {
-                const post = await getPostBySlug(slug)
-                cachedPost[slug] = post
-                setPost(post)
-            } catch (e) {
-            } finally {
-                updateLoading(false)
+        async function eff() {
+            if (slug) {
+                const { data } = await postLazy({ variables: { slug } })
+                if (data?.post) {
+                    await updatePostView({
+                        variables: {
+                            id: data.post.id,
+                            views: data.post.views + 1,
+                        },
+                    })
+                    console.log(cache)
+                }
             }
         }
-
-        if (slug && cachedPost[slug]) {
-            setPost(cachedPost[slug])
-        } else fetchPost()
+        eff()
 
         return () => {
             clearTimeout(timeout)
         }
     }, [slug])
 
-    const minRead = getMinRead(post?.content)
+    const minRead = getMinRead(data?.post?.content)
 
     return (
         <div className="flex justify-center gap-10 app-container my-5">
@@ -73,13 +67,15 @@ export default function PostDetailView() {
                 <SkeletonPost />
             ) : (
                 <>
-                    {post && (
+                    {data?.post && (
                         <article className="max-w-[770px] flex-grow">
                             <h1 className="text-center font-bold text-4xl">
-                                {post.title}
+                                {data.post.title}
                             </h1>
                             <div className="mt-2 flex items-center justify-center text-gray-400">
-                                {dayjs(post.createdAt).format('MMM DD, YYYY')}
+                                {dayjs(data.post.createdAt).format(
+                                    'MMM DD, YYYY'
+                                )}
                                 <BsDot />
                                 <span>{minRead} min read</span>
                             </div>
@@ -138,7 +134,7 @@ export default function PostDetailView() {
                                     className="mt-10 space-y-2 tracking-wider leading-relaxed"
                                     remarkPlugins={[remarkGfm]}
                                 >
-                                    {post.content}
+                                    {data.post.content}
                                 </ReactMarkdown>
                             </div>
                         </article>
