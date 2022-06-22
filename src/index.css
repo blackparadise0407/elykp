@@ -94,5 +94,5 @@ p.p {
 
 code.quote {
     font-family: 'Poppins', sans-serif;
-    @apply inline-block py-1 px-1.5 rounded bg-gray-200;
+    @apply inline-block py-0.5 px-1.5 rounded bg-neutral-100;
 }

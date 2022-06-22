@@ -83,6 +83,11 @@ export default function PostDetailView() {
                             <div ref={ref}>
                                 <ReactMarkdown
                                     components={{
+                                        img({ node: _, ...rest }) {
+                                            return (
+                                                <img {...rest} loading="lazy" />
+                                            )
+                                        },
                                         h1: ({ node: _, ...rest }) => (
                                             <h1
                                                 className="scroll-mt-10 font-bold text-2xl"
