@@ -74,18 +74,25 @@ section {
 
 .link {
     border-bottom-width: 0;
-    background-image: linear-gradient(transparent, transparent), linear-gradient(#006eff, #006eff);
+    background-image: linear-gradient(transparent, transparent),
+        linear-gradient(#006eff, #006eff);
     background-size: 0 2px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size .4s ease-in-out, color 0.2s ease;
+    transition: background-size 0.4s ease-in-out, color 0.2s ease;
 }
 
 .link:hover {
     background-size: 100% 2px;
-    background-position: 0 100%
+    background-position: 0 100%;
 }
 
-p {
+p.p {
     word-spacing: 0.05em;
+    @apply text-lg;
+}
+
+code.quote {
+    font-family: 'Poppins', sans-serif;
+    @apply inline-block py-1 px-1.5 rounded bg-gray-200;
 }

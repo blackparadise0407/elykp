@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
 import { BsDot } from 'react-icons/bs'
@@ -96,8 +97,15 @@ export default function PostDetailView() {
                                                 {...rest}
                                             />
                                         ),
-                                        p: ({ node: _, ...rest }) => (
-                                            <p {...rest} />
+                                        p: ({
+                                            node: _,
+                                            className,
+                                            ...rest
+                                        }) => (
+                                            <p
+                                                className={clsx('p', className)}
+                                                {...rest}
+                                            />
                                         ),
                                         code: ({
                                             node: _,
@@ -123,7 +131,10 @@ export default function PostDetailView() {
                                                 />
                                             ) : (
                                                 <code
-                                                    className={className}
+                                                    className={clsx(
+                                                        'quote',
+                                                        className
+                                                    )}
                                                     {...props}
                                                 >
                                                     {children}
@@ -131,7 +142,7 @@ export default function PostDetailView() {
                                             )
                                         },
                                     }}
-                                    className="mt-10 space-y-2 tracking-wider leading-relaxed"
+                                    className="mt-10 space-y-2 tracking-wider leading-normal"
                                     remarkPlugins={[remarkGfm]}
                                 >
                                     {data.post.content}

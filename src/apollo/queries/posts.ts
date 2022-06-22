@@ -8,17 +8,17 @@ export const POSTS_QUERY = gql`
                 endCursor
             }
         }
-        posts(first: 10, orderBy: publishedAt_DESC) {
+        posts(first: 10, orderBy: createdAt_DESC) {
             author
             content
             createdAt
             id
-            published
             publishedAt
             slug
             title
             upvotes
             views
+            description
         }
     }
 `
@@ -31,7 +31,6 @@ export const POST_QUERY = gql`
             createdAt
             id
             publishedAt
-            published
             slug
             title
             upvotes
@@ -45,6 +44,9 @@ export const UPDATE_POST_VIEW_MUTATION = gql`
         updatePost(data: { views: $views }, where: { id: $id }) {
             id
             views
+        }
+        publishPost(where: { id: $id }, to: PUBLISHED) {
+            id
         }
     }
 `

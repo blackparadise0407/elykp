@@ -11,7 +11,8 @@ interface PostCardProps {
 }
 
 export default memo(function PostCard({ data }: PostCardProps) {
-    const { slug, title, content, views, upvotes, createdAt } = data
+    const { slug, title, content, description, views, upvotes, createdAt } =
+        data
     const minRead = getMinRead(content)
 
     return (
@@ -24,7 +25,7 @@ export default memo(function PostCard({ data }: PostCardProps) {
                 <BsDot />
                 <span className="text-blue-500">{minRead} min read</span>
             </div>
-            <p className="line-clamp-2">{content}</p>
+            <p className="line-clamp-2">{description}</p>
             <Link className="inline-block underline" to={`/${slug}`}>
                 Read more
             </Link>

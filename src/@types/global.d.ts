@@ -8,6 +8,7 @@ declare global {
         views: number
         createdAt: Date
         author: string
+        description: string
         publishedAt: Date
     }
 
