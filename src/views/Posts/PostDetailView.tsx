@@ -67,7 +67,7 @@ export default function PostDetailView() {
             ) : (
                 <>
                     {data?.post && (
-                        <article className="max-w-[770px] flex-grow">
+                        <article className="max-w-[770px] w-full flex-1">
                             <h1 className="text-center font-bold text-4xl">
                                 {data.post.title}
                             </h1>
