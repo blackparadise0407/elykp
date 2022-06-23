@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
+import { AiFillCopy } from 'react-icons/ai'
 import { BsDot } from 'react-icons/bs'
 import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
@@ -9,12 +10,11 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import remarkGfm from 'remark-gfm'
 import slugify from 'slugify'
 
-import { cache } from 'apollo/client'
 import { Skeleton } from 'components'
 import { TableOfContent } from 'components/TableOfContent'
 import { useHeadingData } from 'hooks/useHeadingData'
 import { useIntersectionObserver } from 'hooks/useIntersectionObserver'
-import { getMinRead } from 'shared/helper'
+import { copyToClipboard, getMinRead } from 'shared/helper'
 
 import { usePostLazyQuery, useUpdatePostViewMutation } from './hooks'
 import SkeletonPost from './SkeletonPost'
@@ -36,7 +36,6 @@ export default function PostDetailView() {
 
         const timeout = setTimeout(() => {
             // Fire page view event after 5s
-            console.log('Viewed')
         }, 5000)
 
         async function eff() {
@@ -49,7 +48,6 @@ export default function PostDetailView() {
                             views: data.post.views + 1,
                         },
                     })
-                    console.log(cache)
                 }
             }
         }
@@ -123,17 +121,30 @@ export default function PostDetailView() {
                                                 className || ''
                                             )
                                             return !inline && match ? (
-                                                <SyntaxHighlighter
-                                                    children={String(
-                                                        children
-                                                    ).replace(/\n$/, '')}
-                                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                                    // @ts-ignore
-                                                    style={okaidia}
-                                                    language={match[1]}
-                                                    PreTag="div"
-                                                    {...props}
-                                                />
+                                                <div className="relative group">
+                                                    <SyntaxHighlighter
+                                                        children={String(
+                                                            children
+                                                        ).replace(/\n$/, '')}
+                                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                                        // @ts-ignore
+                                                        style={okaidia}
+                                                        language={match[1]}
+                                                        PreTag="div"
+                                                        {...props}
+                                                    />
+                                                    <button
+                                                        className="opacity-0 absolute flex items-center gap-1 button top-2 right-2 group-hover:opacity-100 hover:opacity-100 transition-opacity"
+                                                        onClick={async () =>
+                                                            await copyToClipboard(
+                                                                children.toString()
+                                                            )
+                                                        }
+                                                    >
+                                                        <AiFillCopy />
+                                                        Copy
+                                                    </button>
+                                                </div>
                                             ) : (
                                                 <code
                                                     className={clsx(

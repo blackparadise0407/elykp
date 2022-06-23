@@ -1,10 +1,14 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 
 import { APP_CONFIG } from 'shared/config'
 
 export const cache = new InMemoryCache({})
 
-export const client = new ApolloClient({
+const httpLink = new HttpLink({
     uri: APP_CONFIG.apiUrl,
+})
+
+export const client = new ApolloClient({
+    link: httpLink,
     cache,
 })

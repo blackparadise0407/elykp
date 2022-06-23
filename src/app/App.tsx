@@ -1,12 +1,14 @@
 import { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { UnderConstruction } from 'components'
 import { AppLayout } from 'layouts/AppLayout'
 
 const PostDetailView = lazy(() => import('views/Posts/PostDetailView'))
 const PostsView = lazy(() => import('views/Posts/PostsView'))
 const AboutView = lazy(() => import('views/About/AboutView'))
+const UnderConstruction = lazy(
+    () => import('components/UnderConstruction/UnderConstruction')
+)
 
 export default function App() {
     return (

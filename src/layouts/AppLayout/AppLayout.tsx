@@ -6,6 +6,7 @@ import { useStore } from 'store/store'
 
 export default function AppLayout() {
     const loading = useStore((state) => state.loading)
+
     return (
         <Fragment>
             {loading && <LinearProgress className="fixed top-0 left-0 z-50" />}
