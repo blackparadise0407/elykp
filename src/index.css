@@ -80,6 +80,7 @@ section {
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size 0.4s ease-in-out, color 0.2s ease;
+    @apply text-black dark:text-white;
 }
 
 .link:hover {
