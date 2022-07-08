@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
+import { ThemeToggle } from 'components/ThemeToggle'
 import { useWindowSize } from 'hooks/useWindowSize'
 
 const links = [
@@ -14,8 +15,8 @@ const links = [
         label: 'About me',
     },
     {
-        to: '/contact',
-        label: 'Contact',
+        to: '/projects',
+        label: 'Projects',
     },
 ]
 
@@ -30,7 +31,7 @@ export default function Header() {
     }, [pathname, w])
 
     return (
-        <header className="relative h-[88px] bg-white shadow">
+        <header className="relative h-[88px] bg-white dark:bg-neutral-900 shadow">
             <div className="app-container mx-auto h-full flex items-center">
                 <h1 className="font-bold">ElykP</h1>
                 <div className="flex-grow"></div>
@@ -53,7 +54,7 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="flex-grow"></div>
-                <div>Theme</div>
+                <ThemeToggle />
             </div>
             {!!offsetLeft && (
                 <div
