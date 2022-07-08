@@ -158,7 +158,7 @@ export default function PostDetailView() {
                                             )
                                         },
                                     }}
-                                    className="mt-10 space-y-2 tracking-wider leading-normal"
+                                    className="mt-10 space-y-3 tracking-wider leading-normal"
                                     remarkPlugins={[remarkGfm]}
                                 >
                                     {data.post.content}

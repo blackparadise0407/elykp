@@ -88,11 +88,9 @@ section {
 }
 
 p.p {
-    word-spacing: 0.05em;
     @apply text-lg;
 }
 
 code.quote {
-    font-family: 'Poppins', sans-serif;
-    @apply inline-block py-0.5 px-1.5 rounded bg-neutral-100;
+    @apply inline-block px-1 rounded text-base text-black bg-neutral-300 dark:bg-neutral-600 dark:text-white;
 }
