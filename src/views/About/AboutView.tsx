@@ -4,7 +4,7 @@ import { AiOutlineCloudDownload } from 'react-icons/ai'
 export default function AboutView() {
     return (
         <>
-            <section className="bg-white h-[calc(100vh-88px)]">
+            <section className="h-[calc(100vh-88px)]">
                 <div className="app-container relative h-full w-full flex items-center">
                     <div className="flex flex-col">
                         <div className="relative max-w-[700px] md:min-w-[400px] space-y-3">
@@ -36,7 +36,14 @@ export default function AboutView() {
                             <br />
                             <small className="flex items-center gap-2 text-gray-500 font-medium">
                                 Or you can take a look my attached CV{' '}
-                                <AiOutlineCloudDownload className="text-xl text-blue-500 hover:text-blue-400 transition-colors cursor-pointer" />
+                                <a
+                                    href={require('assets/files/cv.pdf')}
+                                    target="_blank"
+                                    download="phamddangkhoa-cv.pdf"
+                                    rel="noreferrer"
+                                >
+                                    <AiOutlineCloudDownload className="text-xl text-blue-500 hover:text-blue-400 transition-colors cursor-pointer" />
+                                </a>
                             </small>
                         </div>
                         <div className="flex-grow"></div>

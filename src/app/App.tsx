@@ -16,7 +16,7 @@ export default function App() {
             <Route path="" element={<AppLayout />}>
                 <Route index element={<PostsView />} />
                 <Route path="about" element={<AboutView />} />
-                <Route path="contact" element={<UnderConstruction />} />
+                <Route path="projects" element={<UnderConstruction />} />
                 <Route path=":slug" element={<PostDetailView />} />
             </Route>
         </Routes>
