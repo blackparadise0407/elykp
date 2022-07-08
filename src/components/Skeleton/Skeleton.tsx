@@ -10,7 +10,7 @@ interface SkeletonProps {
 const BaseSkeleton = ({ width }: Pick<SkeletonProps, 'width'>) => {
     return (
         <div
-            className="animate-pulse w-full h-5 rounded bg-gray-200"
+            className="animate-pulse w-full h-5 rounded bg-gray-200 dark:bg-neutral-700"
             style={{ width }}
         ></div>
     )
