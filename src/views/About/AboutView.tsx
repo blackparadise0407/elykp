@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { AiOutlineCloudDownload } from 'react-icons/ai'
 
+import { TruckContainer } from 'components'
+
 export default function AboutView() {
     return (
         <>
@@ -76,12 +78,13 @@ export default function AboutView() {
                             </li>
                         </ul>
                     </div>
-                    <img
+                    <TruckContainer />
+                    {/* <img
                         loading="eager"
                         className="hidden md:block min-w-0 max-w-[720px] mx-auto"
                         src={require('assets/images/profile.png')}
                         alt="Picture of Kyle Pham"
-                    />
+                    /> */}
                 </div>
             </section>
         </>

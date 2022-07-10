@@ -32,6 +32,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     'react/no-children-prop': "off",
     'no-empty-function': 'off',
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-empty-function": [
       "error",
       { allow: ["arrowFunctions"] },
